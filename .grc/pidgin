@@ -1,6 +1,14 @@
 #
-# (2015-09-17 23:01:52) nick: message...
-# (23:01:52) nick: message...
+# Make pidgin logs colorful :)
+#
+# Usage:
+#
+#   $ more ~/.purple/logs/jabber/me@jabber.ru/friend@jabber.org/2015-10-* | grcat pidgin | less
+#
+# Logs format:
+#
+#   (2015-09-17 23:01:52) nick: message...
+#   (23:01:52) nick: message...
 #
 regexp=^\(((?:\d+-\d+-\d+\s+)?\d+:\d+:\d+)\)\s([^:]+):\s+
 colours=default,cyan,bold yellow
