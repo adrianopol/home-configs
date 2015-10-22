@@ -1,0 +1,7 @@
+# increase maximum volume value
+softvol=yes
+softvol-max=200
+
+# unicode subtitles
+unicode=yes
+utf8=yes

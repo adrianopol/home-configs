@@ -3,6 +3,7 @@
 !/.gitignore
 !/.grc/
 !/github-png-samples/
+!/.mplayer/
 
 !/.config/
 /.config/*
