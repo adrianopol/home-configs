@@ -12,3 +12,10 @@
 !/.purple/
 /.purple/*
 !/.purple/smileys
+
+!/.vim/
+/.vim/*
+!/.vim/*.vim
+!/.vim/colors
+!/.vim/ftdetect
+!/.vim/syntax
