@@ -1,0 +1,22 @@
+[alias]
+	br = branch
+	ci = commit
+	co = checkout
+	df = diff
+	st = status
+	dfw = diff --color-words
+	dfc = diff --color-words=.
+	dfcr = diff --word-diff-regex=.
+[color]
+	ui = auto
+[core]
+	editor = vim
+	quotepath = false
+[merge]
+	tool = kdiff3
+#	tool = meld
+[push]
+	default = simple
+[user]
+	name = Andrew Petelin
+	email = adrianopol@gmail.com

@@ -1,8 +1,16 @@
 /*
 
+!/.ackrc
+!/.ctags
+!/.gemrc
+!/.gitconfig
 !/.gitignore
 !/.grc/
+!/.irbrc
 !/.mplayer/
+!/.profile
+!/.tmux.conf
+!/.vimrc
 !/github-png-samples/
 
 !/.config/
