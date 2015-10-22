@@ -1,0 +1,11 @@
+--no-mtime
+--prefer-insecure
+
+-N 8
+
+# --output "%(uploader)s - %(title)s [%(id)s].%(ext)s"
+
+# --write-description
+# --write-info-json
+
+# -f 'bv*[height<=700]+ba/best'

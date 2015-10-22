@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+set -eux
+
+# The numbering of sinks is not guaranteed to be persistent, so all sinks in the
+# default.pa file should be identified by the name.
+# For quick identification at runtime (e.g. to manage sound volume), you can use
+# the sink index instead of the sink name.
+# (https://wiki.archlinux.org/index.php/PulseAudio/Examples)
+
+get_volume_by_sink_ind() {
+  pactl list sinks | \
+    grep -P '^\s*Volume:' | \
+    head -n $(( $1 + 1 )) | tail -n 1 | \
+    sed -re 's,.* ([0-9][0-9]*)%.*,\1,'
+}
+
+get_running_sink_ind() {
+  pactl list short sinks | awk '/RUNNING/ { print $1; }' | head -1
+}
+
+card="$(get_running_sink_ind)"
+card="${card:-0}"
+
+cmd="${1:-}"
+case "$cmd" in
+(u) pactl set-sink-volume "$card" +4% ;;
+(d) pactl set-sink-volume "$card" -4% ;;
+(m) pactl set-sink-mute "$card" toggle ;;
+(*) echo "Unknown control command: $cmd" >&2; exit 1 ;;
+esac
+
+#~/usr/bin/notify-send -t 800 "Volume: $(get_volume_by_sink_ind "$card")%"
