@@ -1,0 +1,4 @@
+#!/bin/sh
+# shellcheck shell=bash
+
+date +'%Y-%m-%d_%H.%M.%S'

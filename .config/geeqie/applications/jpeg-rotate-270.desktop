@@ -1,0 +1,25 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+#
+# The name which appears in the menu:
+Name=Loselessly rotate JPEG -90 deg. (c.c.w.)
+
+# Replace "command" with the actual command or script:
+Exec=jpegtran -rotate 270 -outfile %f %f
+
+# Desktop files that are usable only in Geeqie should be marked like this:
+Categories=X-Geeqie;
+OnlyShowIn=X-Geeqie;
+
+# Show in menu "Edit/Orientation"
+# X-Geeqie-Menu-Path=EditMenu/OrientationMenu
+
+# This is a filter - see symlink.desktop and geeqie-symlink for an example
+# how to use this feature
+# X-Geeqie-Filter=true
+
+# It can be made verbose
+# X-Geeqie-Verbose=true
+
+MimeType=image/jpeg;
