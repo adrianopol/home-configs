@@ -10,6 +10,6 @@
 #   (2015-09-17 23:01:52) nick: message...
 #   (23:01:52) nick: message...
 #
-regexp=^\(((?:\d+-\d+-\d+\s+)?\d+:\d+:\d+)\)\s([^:]+):\s+
+regexp=^\(((?:\d+-\d+-\d+\s+)?\d+:\d+:\d+(?:\s+[AP]M)?)\)\s([^:]+):\s+
 colours=default,cyan,bold yellow
 count=once
