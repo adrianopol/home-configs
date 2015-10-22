@@ -1,0 +1,11 @@
+# increase maximum volume value
+softvol=yes
+softvol-max=200
+
+# unicode subtitles
+unicode=yes
+utf8=yes
+
+# console messages
+msgcolor=1
+#msgmodule=1

@@ -1,0 +1,42 @@
+[alias]
+  br = branch
+  bra = branch -a -vv
+  ci = commit
+  co = checkout
+  df = diff
+  hh = stash
+  st = status
+  dfw = diff --color-words
+  dfc = diff --color-words=.
+  dfcr = diff --word-diff-regex=.
+  pure = pull --rebase --tags
+  puff = pull --ff-only --tags
+  lgraph = log --graph --all --decorate
+  lg = log --date=\"format:%y%m%d.%H%M\" --pretty=\"format:%C(yellow)%h%C(reset) %cd %C(magenta)%<(15,trunc)%aL%C(reset) %s %C(auto)%d\"
+  br-sorted = branch -a --sort=-committerdate
+[color]
+  ui = auto
+[core]
+  editor = vim
+  quotepath = false
+  #pager = less -FSRX
+  pager = less -FRX
+[transfer]
+  fsckObjects = true
+[fetch]
+  #all = true
+  parallel = 4
+  prune = true
+[merge]
+  #tool = kdiff3
+  tool = meld
+[push]
+  default = current
+  autoSetupRemote = true
+[filter "lfs"]
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+[url "git@gitlab.com:"]
+  insteadOf = https://gitlab.com
