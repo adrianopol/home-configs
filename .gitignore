@@ -2,8 +2,8 @@
 
 !/.gitignore
 !/.grc/
-!/github-png-samples/
 !/.mplayer/
+!/github-png-samples/
 
 !/.config/
 /.config/*
@@ -19,3 +19,13 @@
 !/.vim/colors
 !/.vim/ftdetect
 !/.vim/syntax
+
+!/usr/
+/usr/*
+!/usr/bin/
+/usr/bin/*
+!/usr/bin/beep_beethoven.sh
+!/usr/bin/beep_star_wars.sh
+!/usr/bin/date-suffix
+!/usr/bin/volume_ctl
+!/usr/bin/youtube-mplayer

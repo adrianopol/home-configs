@@ -1,0 +1,27 @@
+#!/bin/bash
+
+set -eu
+
+#card_num=$( arecord -l | grep -i logitech | cut -d' ' -f2 | sed 's/://' )
+#control='Headphone,0'
+card_num=1
+control='Master,0'
+
+cmd=${1:-}
+amixer_cmd=
+
+case $cmd in
+  (up)    amixer_cmd='3%+' ;;
+  (down)  amixer_cmd='3%-' ;;
+  (mute)  amixer_cmd='mute' ;;
+  (*)
+    echo "Unknown control command: $1" >&2
+    exit 1
+    ;;
+esac
+
+amixer -c $card_num sset "$control" $amixer_cmd
+
+volume=$( amixer -c $card_num get "$control" 2>&1 | grep -Po '\d+%' )
+
+/usr/bin/notify-send -t 800 "Volume" "$volume"
