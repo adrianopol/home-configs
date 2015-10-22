@@ -1,0 +1,24 @@
+# used by neovim's rust-analyzer plugin; see run_rustfmt in
+# https://github.com/rust-lang/rust-analyzer/blob/master/crates/rust-analyzer/src/handlers/request.rs
+
+edition = "2024"
+
+#use_small_heuristics = "Max" # ??
+max_width = 110
+# TODO: consider switching to "Off"
+use_small_heuristics = "Max" # bulk updates of `*_width` settings (except `comment_width`)
+#array_width = 110
+#chain_width = 110
+#fn_call_width = 110
+#single_line_let_else_max_width = 80
+
+fn_params_layout = "Compressed"
+match_block_trailing_comma = true # put a trailing comma after a block based match arm
+
+# TODO: unstable options are now enabled only via args to `cargo fmt`
+#unstable_features = true
+#comment_width = 110
+#imports_granularity = "Module"
+#merge_imports = true
+#normalize_doc_attributes = true
+#struct_field_align_threshold = 20

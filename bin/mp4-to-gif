@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+set -eu
+
+file="${1:?"$0 file ss to [out]"}"
+ss="${2:-}"
+to="${3:-}"
+out_gif="${4:-"${file%.*}.gif"}"
+
+cropped_file="${out_gif%.gif}.tmp.${file##*.}"
+
+#vencoder=copy
+venc=libx264
+
+src="$file"
+if [[ -n "$ss" ]] && [[ -n "$to" ]]; then
+  set -x
+  ffmpeg -i "$file" -an -c:v "$venc" -ss "$ss" -to "$to" "$cropped_file"
+  set +x
+  src="$cropped_file"
+fi
+
+opts=(
+  -i "$src"
+  -r 7
+  -vf 'scale=350:-1,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse'
+)
+
+set -x
+ffmpeg "${opts[@]}" "$out_gif"
+set +x
+
+if [[ -f "$cropped_file" ]]; then
+  rm -f "$cropped_file"
+fi
