@@ -8,3 +8,7 @@
 !/.config/
 /.config/*
 !/.config/youtube-dl/
+
+!/.purple/
+/.purple/*
+!/.purple/smileys
