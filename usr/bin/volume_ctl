@@ -4,7 +4,12 @@ set -eu
 
 #card_num=$( arecord -l | grep -i logitech | cut -d' ' -f2 | sed 's/://' )
 #control='Headphone,0'
-card_num=1
+if [[ $(hostname) == alpha ]]; then
+  card_num=0
+else
+  card_num=1
+fi
+
 control='Master,0'
 
 cmd=${1:-}
