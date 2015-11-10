@@ -16,8 +16,8 @@ cmd=${1:-}
 amixer_cmd=
 
 case $cmd in
-  (up)    amixer_cmd='3%+' ;;
-  (down)  amixer_cmd='3%-' ;;
+  (up)    amixer_cmd='5%+' ;;
+  (down)  amixer_cmd='5%-' ;;
   (mute)  amixer_cmd='mute' ;;
   (*)
     echo "Unknown control command: $1" >&2
