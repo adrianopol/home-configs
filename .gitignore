@@ -31,10 +31,5 @@
 !/usr/
 /usr/*
 !/usr/bin/
-/usr/bin/*
-!/usr/bin/beep_beethoven.sh
-!/usr/bin/beep_star_wars.sh
-!/usr/bin/convert-canon-video.sh
-!/usr/bin/date-suffix
-!/usr/bin/volume_ctl
-!/usr/bin/youtube-mplayer
+/usr/bin/encrypt_files.sh
+/usr/bin/rm-tex-tmp
