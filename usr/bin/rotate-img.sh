@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -eu -o pipefail
+
 err() {
   echo "Error: $*"
   exit 1
