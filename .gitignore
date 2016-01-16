@@ -15,6 +15,7 @@
 
 !/.config/
 /.config/*
+!/.config/mpv/
 !/.config/youtube-dl/
 
 !/.purple/
