@@ -8,4 +8,4 @@ utf8=yes
 
 # console messages
 msgcolor=1
-msgmodule=1
+#msgmodule=1
