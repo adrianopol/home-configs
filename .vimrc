@@ -20,32 +20,9 @@ set noignorecase
 
 let g:leave_my_textwidth_alone = 1 " fix for Gentoo :)
 
-"set mouse=a
+set sessionoptions=blank,help,tabpages
 
-"" CleverTabs v1.0.2: Martin Spevak 2008 (tabs only on the line beginning)
-"" (http://www.vim.org/scripts/script.php?script_id=2308)
-"function! CleverTabs(shiftwidth)
-"  let line = getline('.')[:col('.')-2]
-"  if col('.') == 1 || line =~ '^\t*$' || line =~ '^$'
-"    let z = "\t"
-"  else
-"    let space = ""
-"    let shiftwidth = a:shiftwidth
-"    let shiftwidth = shiftwidth - ((virtcol('.')-1) % shiftwidth)
-"
-"    while shiftwidth > 0
-"      let shiftwidth = shiftwidth - 1
-"      let space = space . ' '
-"    endwhile
-"
-"    let z = space
-"  endif
-"
-"  return z
-"endfunction "CleverTabs
-"
-"" map tab key to function
-"imap <silent> <Tab> <C-r>=CleverTabs(4)<cr>
+"set mouse=a
 
 "---------- Mappings ----------"
 
@@ -111,13 +88,37 @@ let g:go_highlight_structs = 1
 " Prevent vim from reading boost include files
 set include=^\\s*#\\s*include\ \\(<boost/\\)\\@!
 
+"" CleverTabs v1.0.2: Martin Spevak 2008 (tabs only on the line beginning)
+"" (http://www.vim.org/scripts/script.php?script_id=2308)
+"function! CleverTabs(shiftwidth)
+"  let line = getline('.')[:col('.')-2]
+"  if col('.') == 1 || line =~ '^\t*$' || line =~ '^$'
+"    let z = "\t"
+"  else
+"    let space = ""
+"    let shiftwidth = a:shiftwidth
+"    let shiftwidth = shiftwidth - ((virtcol('.')-1) % shiftwidth)
+"
+"    while shiftwidth > 0
+"      let shiftwidth = shiftwidth - 1
+"      let space = space . ' '
+"    endwhile
+"
+"    let z = space
+"  endif
+"
+"  return z
+"endfunction "CleverTabs
+"
+"" map tab key to function
+"imap <silent> <Tab> <C-r>=CleverTabs(4)<cr>
+
 if has('gui_running')
   colorscheme paq
   set number
   set numberwidth=5
 
   set guifont=Terminus\ 9
-  "set guifont=Monospace\ 8
 
   set showtabline=2
 
