@@ -17,12 +17,11 @@ set scrolloff=1   " n lines to the curor when moving vertically
 set incsearch
 set hlsearch
 set noignorecase
-
-let g:leave_my_textwidth_alone = 1 " fix for Gentoo :)
-
+set cm=blowfish2  " best (requires >=vim-7.4.399)
+"set mouse=a
 set sessionoptions=blank,help,tabpages
 
-"set mouse=a
+let g:leave_my_textwidth_alone = 1 " fix for Gentoo :)
 
 "---------- Mappings ----------"
 
@@ -57,9 +56,6 @@ nnoremap <C-Enter> <C-w><C-]><C-w>T
 noremap <C-S-PageUp>   :tabmove -1<CR>
 noremap <C-S-PageDown> :tabmove +1<CR>
 
-" Return to the left-side tab after closing the current one
-" (http://vim.wikia.com/wiki/Have_focus_on_left_tab_after_tabclose)
-
 "----- Language-specific settings -----"
 
 let html_use_css = 1 " the ':%TOhtml' command generates html without <font> tags
@@ -68,16 +64,16 @@ let html_use_css = 1 " the ':%TOhtml' command generates html without <font> tags
 au FileType * setl fo-=r
 
 " File types
-au BufRead,BufNewFile *.djhtml set ft=htmldjango
-au BufRead,BufNewFile *.rs set ft=rust
-au BufRead,BufNewFile *.scala set ft=scala
-au BufRead,BufNewFile *.tex set ft=tex
-au BufRead,BufNewFile *.vala,*.vapi set ft=vala
-au BufRead,BufNewFile SConstruct,SConscript set ft=python
+au BufRead,BufNewFile *.djhtml              setl ft=htmldjango
+au BufRead,BufNewFile *.rs                  setl ft=rust
+au BufRead,BufNewFile *.scala               setl ft=scala
+au BufRead,BufNewFile *.tex                 setl ft=tex
+au BufRead,BufNewFile *.vala,*.vapi         setl ft=vala
+au BufRead,BufNewFile SConstruct,SConscript setl ft=python
 
-au FileType asciidoc setlocal textwidth=100
-au FileType d setlocal noexpandtab shiftwidth=2 tabstop=2
-au FileType go,make setlocal noexpandtab shiftwidth=4 tabstop=4
+au FileType asciidoc  setl textwidth=100
+au FileType d         setl noexpandtab shiftwidth=2 tabstop=2
+au FileType go,make   setl noexpandtab shiftwidth=8 tabstop=8
 
 " Go
 "let g:go_fmt_autosave = 0
@@ -87,28 +83,6 @@ let g:go_highlight_structs = 1
 
 " Prevent vim from reading boost include files
 set include=^\\s*#\\s*include\ \\(<boost/\\)\\@!
-
-"" CleverTabs v1.0.2: Martin Spevak 2008 (tabs only on the line beginning)
-"" (http://www.vim.org/scripts/script.php?script_id=2308)
-"function! CleverTabs(shiftwidth)
-"  let line = getline('.')[:col('.')-2]
-"  if col('.') == 1 || line =~ '^\t*$' || line =~ '^$'
-"    let z = "\t"
-"  else
-"    let space = ""
-"    let shiftwidth = a:shiftwidth
-"    let shiftwidth = shiftwidth - ((virtcol('.')-1) % shiftwidth)
-"
-"    while shiftwidth > 0
-"      let shiftwidth = shiftwidth - 1
-"      let space = space . ' '
-"    endwhile
-"
-"    let z = space
-"  endif
-"
-"  return z
-"endfunction "CleverTabs
 "
 "" map tab key to function
 "imap <silent> <Tab> <C-r>=CleverTabs(4)<cr>
@@ -127,8 +101,8 @@ if has('gui_running')
   set guioptions-=T
   set guioptions-=l
   set guioptions-=L
-  set guioptions-=R
   set guioptions-=r
+  set guioptions-=R
 
   map <S-Insert> <MiddleMouse>
 endif
