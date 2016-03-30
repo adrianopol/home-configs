@@ -10,4 +10,4 @@ while (<>) {
   print
 }
 
-#perl -Mutf8 -CS -lpe "tr/[qwertyuiop\[\]asdfghjkl;'zxcvbnm,.&]/[йцукенгшщзхъфывапролджэячсмитьбю?]/"
+#perl -Mutf8 -CS -lpe "tr/qwertyuiop[]asdfghjkl;'zxcvbnm,.&/йцукенгшщзхъфывапролджэячсмитьбю?/"
