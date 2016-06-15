@@ -1,3 +1,6 @@
 --type-set=asciidoc:ext:asciidoc
 --type-set=gettext:ext:po,pot
 --type-set=kconfig:is:Kconfig
+
+# Code composer
+--type-set=ccspp:ext:pp

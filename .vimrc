@@ -73,7 +73,8 @@ au BufRead,BufNewFile SConstruct,SConscript setl ft=python
 
 au FileType asciidoc  setl textwidth=100
 au FileType d         setl noexpandtab shiftwidth=2 tabstop=2
-au FileType go,make   setl noexpandtab shiftwidth=8 tabstop=8
+au FileType go        setl noexpandtab shiftwidth=4 tabstop=4
+au FileType make      setl noexpandtab shiftwidth=8 tabstop=8
 
 " Go
 "let g:go_fmt_autosave = 0
