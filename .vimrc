@@ -22,6 +22,7 @@ set cm=blowfish2  " best (requires >=vim-7.4.399)
 set sessionoptions=blank,help,tabpages
 
 let g:leave_my_textwidth_alone = 1 " fix for Gentoo :)
+let g:omni_sql_no_default_maps = 1 " disable sql omni completion
 
 "---------- Mappings ----------"
 
@@ -72,6 +73,7 @@ au BufRead,BufNewFile *.vala,*.vapi         setl ft=vala
 au BufRead,BufNewFile SConstruct,SConscript setl ft=python
 
 au FileType asciidoc  setl textwidth=100
+"au FileType cpp       setl cc=101
 au FileType d         setl noexpandtab shiftwidth=2 tabstop=2
 au FileType go        setl noexpandtab shiftwidth=4 tabstop=4
 au FileType make      setl noexpandtab shiftwidth=8 tabstop=8

@@ -13,8 +13,8 @@
 	editor = vim
 	quotepath = false
 [merge]
-	tool = kdiff3
-#	tool = meld
+#	tool = kdiff3
+	tool = meld
 [push]
 	default = simple
 [user]
