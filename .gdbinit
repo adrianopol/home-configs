@@ -1,6 +1,6 @@
 set history filename ~/.gdb_history
 set history save on
-set history size 1000
+set history size 2000
 set history remove-duplicates unlimited
 
 set print pretty on
