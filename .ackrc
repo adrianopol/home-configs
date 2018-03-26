@@ -2,7 +2,10 @@
 --type-set=ebuild:ext:ebuild
 --type-set=gettext:ext:po,pot
 --type-set=kconfig:is:Kconfig
---type-set=pbgen:match:/\.pb.(cc|h|go)$/
+
+# Protobuf
+--type-set=proto:ext:proto
+--type-set=pbgen:match:/\.pb\.(cc|h|go)|_pb2.py$/
 
 # Code composer
 --type-set=ccspp:ext:pp
