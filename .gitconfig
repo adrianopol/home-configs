@@ -1,5 +1,6 @@
 [alias]
 	br = branch
+	bra = branch -a
 	ci = commit
 	co = checkout
 	df = diff
@@ -7,6 +8,7 @@
 	dfw = diff --color-words
 	dfc = diff --color-words=.
 	dfcr = diff --word-diff-regex=.
+	sup = submodule update --init --recursive
 [color]
 	ui = auto
 [core]
