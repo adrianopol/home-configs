@@ -1,5 +1,8 @@
 syntax on
 colorscheme default
+if &diff
+  colorscheme blue
+endif
 execute pathogen#infect()
 
 set nocompatible
