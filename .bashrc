@@ -9,7 +9,7 @@ if [[ $- != *i* ]] ; then
   return
 fi
 
-[ -f /etc/profile ] && . /etc/profile
+[[ -f /etc/profile ]] && . /etc/profile
 
 HISTCONTROL="ignoreboth:ignorespace"
 HISTSIZE=2000
@@ -21,13 +21,16 @@ shopt -s checkwinsize
 ## make less more friendly for non-text input files, see lesspipe(1)
 #[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
+PROMPT_COMMAND='echo -ne "\033]0;[${USER}@${HOSTNAME}]:${PWD}\007"'
+
 #~if [[ -r /usr/share/git/git-prompt.sh ]]; then
 #~  . /usr/share/git/git-prompt.sh
 #~fi
+__get_git_branch() {
+  git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \([[:print:]]\+\)/ \1/'
+}
 
-PROMPT_COMMAND='echo -ne "\033]0;[${USER}@${HOSTNAME}]:${PWD}\007"'
-
-get_PS1() {
+__get_PS1() {
   local bldblu='\e[1;34m' # Blue
   local bldgrn='\e[1;32m' # Green
   local bldred='\e[1;31m' # Red
@@ -44,10 +47,12 @@ get_PS1() {
 
   echo -n "\[$bldylw\][[ \
 \[$user_color\]\u\[$txtrst\]@\[$bldgrn\]\h\[$txtrst\] \
-\[$bldblu\]\w\[$bldylw\] ]]\[$txtrst\] "
+\[$bldblu\]\w\[$bldylw\]\$(__get_git_branch) ]]\[$txtrst\] "
 }
 
-PS1="$(get_PS1)"
+PS1="$(__get_PS1)"
+
+unset __get_PS1
 
 export DEFAULT_CHARSET="UTF-8"
 export PATH="$HOME/usr/bin:$PATH"
@@ -55,12 +60,12 @@ export LANG="en_US.utf-8"
 export EDITOR="vim"
 
 # Common aliases
-[ -f ~/.aliases.bash ] && . ~/.aliases.bash
+[[ -f ~/.aliases.bash ]] && . ~/.aliases.bash
 
 source_scripts() {
   local scripts="$@"
   for script in $scripts; do
-    [ -r ~/.bash_scripts/$script ] && . ~/.bash_scripts/$script
+    [[ -r ~/.bash_scripts/$script ]] && . ~/.bash_scripts/$script
   done
 }
 

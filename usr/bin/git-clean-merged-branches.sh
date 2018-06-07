@@ -4,7 +4,11 @@ set -eu -o pipefail
 
 br_exclude="(\*|master|develop)"
 
-brs="$( git branch --merged | grep -Pv "$br_exclude" )"
+brs="$( git branch --merged | grep -Pv "$br_exclude" || true )"
+
+if [[ -z $brs ]]; then
+  exit 0
+fi
 
 echo -en "Really remove branches\n\n$brs\n\n? (y/[n]) -> "
 yn=
