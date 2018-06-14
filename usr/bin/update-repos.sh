@@ -6,9 +6,7 @@ usage() {
   : #TODO
 }
 
-max_depth=3
-
-all_repos="$( find . -maxdepth $max_depth \( \
+all_repos="$( find . -maxdepth 3 \( \
   -name .git -o \
   -name .hg -o \
   -name .svn \) \
@@ -16,9 +14,9 @@ all_repos="$( find . -maxdepth $max_depth \( \
 
 repos="${@:-$all_repos}"
 
-echo -en ">>> Update the following repos:\n\n$repos\n\n? (y/[n]) -> "
+echo -en ">>> Update the following repos:\n\n$repos\n\n? (Y/n) -> "
 read answer
-if [[ $answer != y ]]; then
+if [[ $answer == n || $answer == N ]]; then
   exit
 fi
 
@@ -35,9 +33,9 @@ while read repo; do
       git pull --rebase
       git submodule update --init --recursive
       git remote prune origin
-      git-clean-merged-branches.sh
+      git-clean-merged-branches.sh -y
       git submodule foreach git remote prune origin
-      git submodule foreach git-clean-merged-branches.sh
+      git submodule foreach git-clean-merged-branches.sh -y
       git gc
       set +x ;;
     (*/.hg)
