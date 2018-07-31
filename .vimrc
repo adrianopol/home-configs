@@ -1,4 +1,4 @@
-syntax on
+syntax off
 colorscheme default
 if &diff
   colorscheme blue

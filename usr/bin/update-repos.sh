@@ -6,48 +6,79 @@ usage() {
   : #TODO
 }
 
-all_repos="$( find . -maxdepth 3 \( \
-  -name .git -o \
-  -name .hg -o \
-  -name .svn \) \
-  -printf '  %P\n' | sort )"
+all_repos="$( grep -v -e '^\s*$' -e '^\s*#' repos.conf )"
+while read path url; do
+  if [[ ! -d "$path" ]]; then
+    echo
+    echo ">>> Cloning $url ..."
+    echo
+    set -x
+    mkdir -p "$path"
+    git clone "$url" -o "$path"
+    set +x
+  fi
 
-repos="${@:-$all_repos}"
-
-echo -en ">>> Update the following repos:\n\n$repos\n\n? (Y/n) -> "
-read answer
-if [[ $answer == n || $answer == N ]]; then
-  exit
-fi
-
-while read repo; do
-  rep="${repo%/*}"
   echo
-  echo ">>> Updating $rep ..."
+  echo ">>> Updating $path ..."
   echo
-
-  pushd "$rep"
-    case "$repo" in
-    (*/.git)
-      set -x
-      git pull --rebase
-      git submodule update --init --recursive
-      git remote prune origin
-      git-clean-merged-branches.sh -y
-      git submodule foreach git remote prune origin
-      git submodule foreach git-clean-merged-branches.sh -y
-      git gc
-      set +x ;;
-    (*/.hg)
-      set -x
-      hg pull
-      set +x ;;
-    (*/.svn)
-      set -x
-      svn up
-      set +x ;;
-    (*)
-      echo ">>> Unknown repository type: $repo" ;;
-    esac
+  pushd "$path"
+    set -x
+    git pull --rebase
+    git submodule update --init --recursive
+    git remote prune origin || true
+    git-clean-merged-branches.sh -y
+    git submodule foreach git remote prune origin
+    git submodule foreach git-clean-merged-branches.sh -y
+    git gc
+    set +x
   popd
-done <<< "$repos"
+done <<<"$all_repos"
+
+echo
+echo "Done."
+
+#~ all_repos="$( find . -maxdepth 3 \( \
+#~   -name .git -o \
+#~   -name .hg -o \
+#~   -name .svn \) \
+#~   -printf '  %P\n' | sort )"
+
+#~ repos="${@:-$all_repos}"
+#~
+#~ echo -en ">>> Update the following repos:\n\n$repos\n\n? (Y/n) -> "
+#~ read answer
+#~ if [[ $answer == n || $answer == N ]]; then
+#~   exit
+#~ fi
+#~
+#~ while read repo; do
+#~   rep="${repo%/*}"
+#~   echo
+#~   echo ">>> Updating $rep ..."
+#~   echo
+#~
+#~   pushd "$rep"
+#~     case "$repo" in
+#~     (*/.git)
+#~       set -x
+#~       git pull --rebase
+#~       git submodule update --init --recursive
+#~       git remote prune origin
+#~       git-clean-merged-branches.sh -y
+#~       git submodule foreach git remote prune origin
+#~       git submodule foreach git-clean-merged-branches.sh -y
+#~       git gc
+#~       set +x ;;
+#~     (*/.hg)
+#~       set -x
+#~       hg pull
+#~       set +x ;;
+#~     (*/.svn)
+#~       set -x
+#~       svn up
+#~       set +x ;;
+#~     (*)
+#~       echo ">>> Unknown repository type: $repo" ;;
+#~     esac
+#~   popd
+#~ done <<< "$repos"

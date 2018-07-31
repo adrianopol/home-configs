@@ -8,15 +8,16 @@
 	dfw = diff --color-words
 	dfc = diff --color-words=.
 	dfcr = diff --word-diff-regex=.
-  pure = pull --rebase
-  # PT
+	pure = pull --rebase
+	# PT
 	sup = submodule update --init --recursive
-  br-sorted = branch -a --sort=-committerdate
+	br-sorted = branch -a --sort=-committerdate
 [color]
 	ui = auto
 [core]
 	editor = vim
 	quotepath = false
+	pager = less -FRX
 [merge]
 #	tool = kdiff3
 	tool = meld
