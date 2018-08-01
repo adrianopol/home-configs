@@ -17,7 +17,7 @@ usage() {
 
 path="${1:-}"
 
-if [[ -z $path || "$path" == "-h" || "$path" == "--help" ]]; then
+if [[ -z "$path" || "$path" == "-h" || "$path" == "--help" ]]; then
   usage
   exit
 fi
