@@ -93,13 +93,16 @@ func chmod_files_in_dir(dir string, dirs *[]string, files_changed, dirs_changed 
 }
 
 func main() {
+	// TODO: add option parsing
+	args_first_file_index := 1
 	if len(os.Args) > 1 && os.Args[1] == "-y" {
 		NO_ACT = false
+		args_first_file_index = 2
 	}
 
 	dirs := []string{"."}
 	if len(os.Args) > 1 {
-		dirs = os.Args[1:]
+		dirs = os.Args[args_first_file_index:]
 	}
 	fmt.Printf("scanning following directories: %v\n", dirs)
 	if NO_ACT {
