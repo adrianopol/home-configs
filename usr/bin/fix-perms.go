@@ -18,6 +18,7 @@ import (
 type Filetype int
 
 const (
+	// TODO: apply more intellectual settings, like go-w / go-wx
 	MODE_FILE os.FileMode = 0644
 	MODE_DIR  os.FileMode = 0755
 )
