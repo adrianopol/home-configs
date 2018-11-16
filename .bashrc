@@ -12,8 +12,8 @@ fi
 [[ -f /etc/profile ]] && . /etc/profile
 
 HISTCONTROL="ignoreboth:ignorespace"
-HISTSIZE=2000
-HISTFILESIZE=2000
+HISTSIZE=10000
+HISTFILESIZE=10000
 
 shopt -s histappend
 shopt -s checkwinsize

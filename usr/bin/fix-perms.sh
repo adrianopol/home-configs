@@ -2,23 +2,41 @@
 
 set -eu -o pipefail
 
-find_args_files=". -type f ! -perm 0644 ! -name *.sh"
-find_args_dirs=". -type d ! -perm 0755"
+exit 1
+# TODO: fix!!!
 
-echo '----- FILES -----'
-set -f
-find $find_args_files
-echo '----- DIRECTORIES -----'
-find $find_args_dirs
-set +f
-echo '-----'
-echo
+find_f_cmd="find . -type f ! -perm 0644 ! -name *.sh"
+find_d_cmd="find . -type d ! -perm 0755"
 
-echo 'WARNING!!!'
-read -r -p "Fix permissions? [y/N] -> " ok
-[[ $ok != 'y' ]] && exit
+files=("$( $find_f_cmd )")
+dirs=("$( $find_d_cmd )")
+
+if [[ -n $files ]]; then
+  echo '-------- FILES --------'
+  #set -f
+  echo "${files[@]}"
+  #set +f
+fi
+if [[ -n $dirs ]]; then
+  echo '----- DIRECTORIES -----'
+  #set -f
+  echo "${dirs[@]}"
+  #set +f
+fi
+if [[ -n "$files" || -n "$dirs" ]]; then
+  echo '-----------------------'
+  echo
+else
+  echo "Nothing to do."
+  exit
+fi
+
+read -r -p "Fix permissions (f:644, d:755)? (Y/n) -> " ok
+if [[ "$ok" == n || "$ok" == N ]]; then
+  exit
+fi
 
 set -xf
-find $find_args_files -exec chmod 644 '{}' \+
-find $find_args_dirs -exec chmod 755 '{}' \+
+$find_f_cmd -exec chmod 644 '{}' \+
+$find_d_cmd -exec chmod 755 '{}' \+
 set +xf
