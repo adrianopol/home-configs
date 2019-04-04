@@ -33,8 +33,6 @@
 !/.vim/ftdetect
 !/.vim/syntax
 
-!/usr/
-/usr/*
-!/usr/bin/
-/usr/bin/encrypt_files.sh
-/usr/bin/rm-tex-tmp
+!/bin/
+/bin/encrypt_files.sh
+/bin/rm-tex-tmp

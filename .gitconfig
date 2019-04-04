@@ -5,10 +5,12 @@
 	co = checkout
 	df = diff
 	st = status
+	hh = stash
 	dfw = diff --color-words
 	dfc = diff --color-words=.
 	dfcr = diff --word-diff-regex=.
 	pure = pull --rebase
+	graff = log --graph --all --decorate
 	# PT
 	sup = submodule update --init --recursive
 	br-sorted = branch -a --sort=-committerdate

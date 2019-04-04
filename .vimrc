@@ -75,6 +75,7 @@ au BufRead,BufNewFile *.scala               setl ft=scala
 au BufRead,BufNewFile *.tex                 setl ft=tex
 au BufRead,BufNewFile *.vala,*.vapi         setl ft=vala
 au BufRead,BufNewFile SConstruct,SConscript setl ft=python
+au BufRead,BufNewFile *.1c                  setl ft=bsl
 
 au FileType asciidoc  setl textwidth=100
 "au FileType cpp       setl cc=101

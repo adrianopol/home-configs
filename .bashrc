@@ -55,21 +55,21 @@ PS1="$(__get_PS1)"
 unset __get_PS1
 
 export DEFAULT_CHARSET="UTF-8"
-export PATH="$HOME/usr/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
 export LANG="en_US.utf-8"
 export EDITOR="vim"
 
-# Common aliases
-[[ -f ~/.aliases.bash ]] && . ~/.aliases.bash
-
 source_scripts() {
   local scripts="$@"
-  for script in $scripts; do
-    [[ -r ~/.bash_scripts/$script ]] && . ~/.bash_scripts/$script
+  local s
+  for s in $scripts; do
+    if [[ -r ~/.bash_scripts/"$s" ]]; then
+      . ~/.bash_scripts/"$s"
+    fi
   done
 }
 
-source_scripts local.sh ptsecurity.sh
+source_scripts "local.sh" "ptsecurity.sh"
 
 # Colorful man pages.
 man() {
@@ -85,4 +85,4 @@ man() {
 }
 
 # Remove duplicates from PATH
-PATH=$( echo $PATH | awk -F: '{for (i=1;i<=NF;i++) { if (!x[$i]++) printf("%s:",$i); }}' | sed -re 's/:+$//' )
+PATH=$( echo "$PATH" | awk -F: '{for (i=1;i<=NF;i++) { if (!x[$i]++) printf("%s:",$i); }}' | sed -re 's/:+$//' )
