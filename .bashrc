@@ -86,3 +86,7 @@ man() {
 
 # Remove duplicates from PATH
 PATH=$( echo "$PATH" | awk -F: '{for (i=1;i<=NF;i++) { if (!x[$i]++) printf("%s:",$i); }}' | sed -re 's/:+$//' )
+
+if [[ $TILIX_ID ]] || [[ $VTE_VERSION ]]; then
+  . /etc/profile.d/vte.sh
+fi

@@ -12,6 +12,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"path/filepath"
 	"strings"
 )
 
@@ -75,7 +76,7 @@ func chmod_files_in_dir(dir string, dirs *[]string, files_changed, dirs_changed 
 	}
 
 	for _, f := range files {
-		full_file_path := dir + "/" + f.Name()
+		full_file_path := filepath.Join(dir, "/", f.Name())
 		mode := f.Mode()
 		if mode.IsDir() {
 			if mode.Perm() != MODE_DIR {
