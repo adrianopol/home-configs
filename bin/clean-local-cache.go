@@ -67,8 +67,10 @@ func getPaths(patterns []string) map[string]int64 {
 			if err != nil {
 				continue
 			}
-			paths[m] = size
-			//log.Printf("path: %v, size: %v", m, size)
+			if size > 0 {
+				paths[m] = size
+				//log.Printf("path: %v, size: %v", m, size)
+			}
 		}
 	}
 

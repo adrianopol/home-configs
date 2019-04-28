@@ -8,11 +8,13 @@ set -eu
 # the sink index instead of the sink name.
 # (https://wiki.archlinux.org/index.php/PulseAudio/Examples)
 
+card=0
+
 cmd="${1:-}"
 case "$cmd" in
-(u) pactl set-sink-volume 0 +5% ;;
-(d) pactl set-sink-volume 0 -5% ;;
-(m) pactl set-sink-mute 0 toggle ;;
+(u) pactl set-sink-volume "$card" +5% ;;
+(d) pactl set-sink-volume "$card" -5% ;;
+(m) pactl set-sink-mute "$card" toggle ;;
 (*) echo "Unknown control command: $1" >&2; exit 1 ;;
 esac
 
