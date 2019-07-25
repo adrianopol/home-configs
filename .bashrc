@@ -31,15 +31,19 @@ __get_git_branch() {
 }
 
 __get_PS1() {
-  local bldblu='\e[1;34m' # Blue
-  local bldgrn='\e[1;32m' # Green
   local bldred='\e[1;31m' # Red
+  local bldgrn='\e[1;32m' # Green
   local bldylw='\e[1;33m' # Yellow
-  local txtcyn='\e[0;36m' # Cyan
-  local txtpur='\e[0;35m' # Purple
+  local bldblu='\e[1;34m' # Blue
+  local bldpur='\e[1;35m' # Purple
+  local bldcyn='\e[1;36m' # Cyan
   local txtred='\e[0;31m' # Red
-  local txtrst='\e[0m'    # Text Reset
+  local txtgrn='\e[0;32m' # Green
   local txtylw='\e[0;33m' # Yellow
+  local txtblu='\e[0;34m' # Blue
+  local txtpur='\e[0;35m' # Purple
+  local txtcyn='\e[0;36m' # Cyan
+  local txtrst='\e[0m'    # Text Reset
 
   # use different colors for root and others
   local user_color="$txtcyn"
@@ -48,6 +52,9 @@ __get_PS1() {
   echo -n "\[$bldylw\][[ \
 \[$user_color\]\u\[$txtrst\]@\[$bldgrn\]\h\[$txtrst\] \
 \[$bldblu\]\w\[$bldylw\]\$(__get_git_branch) ]]\[$txtrst\] "
+#~  echo -n "\[$bldylw\]--- \
+#~\[$user_color\]\u\[$txtrst\]@\[$bldgrn\]\h\[$txtrst\] \
+#~\[$bldblu\]\w\[$bldylw\]\$(__get_git_branch) ---\[$txtrst\]\n\[$bldcyn\]>>>\[$txtrst\] "
 }
 
 PS1="$(__get_PS1)"

@@ -6,6 +6,7 @@
 # Usage: ./me url [youtube-dl parameters]
 #
 
-COOKIE_FILE="/var/tmp/youtube-dl-cookies.txt"
+cookie_file="/var/tmp/youtube-dl-cookies.txt"
+flags= #"-f 43"
 set -x
-mplayer -cookies -cookies-file $COOKIE_FILE $( youtube-dl -g --cookies $COOKIE_FILE "$@" )
+mplayer -cookies -cookies-file $cookie_file "$( youtube-dl -g --cookies "$cookie_file" $flags "$@" )"
