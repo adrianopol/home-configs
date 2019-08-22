@@ -37,6 +37,20 @@ func humanize(n int64) string {
 	}
 }
 
+func ask(prefix string, dflt string) bool {
+	scanner := bufio.NewScanner(os.Stdin)
+	for {
+		fmt.Print(prefix)
+		scanner.Scan()
+		yn := scanner.Text()
+		if yn == "y" || yn == "Y" || (yn == "" && dflt == "y") {
+			return true
+		} else if yn == "n" || yn == "N" || (yn == "" && dflt == "n") {
+			return false
+		}
+	}
+}
+
 ///
 
 func getPatterns(filename string) []string {
@@ -91,20 +105,6 @@ func getSize(path string) (int64, error) {
 			return err
 		})
 	return size, err
-}
-
-func ask(prefix string, dflt string) bool {
-	scanner := bufio.NewScanner(os.Stdin)
-	for {
-		fmt.Print(prefix)
-		scanner.Scan()
-		yn := scanner.Text()
-		if yn == "y" || yn == "Y" || (yn == "" && dflt == "y") {
-			return true
-		} else if yn == "n" || yn == "N" || (yn == "" && dflt == "n") {
-			return false
-		}
-	}
 }
 
 func main() {

@@ -1,84 +1,45 @@
 #!/bin/bash
 
-set -eu -o pipefail
+set -eu
+set -o pipefail
 
-usage() {
-  : #TODO
-}
+all_repos="$( find -mindepth 2 -maxdepth 2 -type d -name .git -printf "%P\n" | sort | sed -re 's,/.*$,,' )"
+repos="${@:-$all_repos}"
+failed_repos=
 
-all_repos="$( grep -v -e '^\s*$' -e '^\s*#' repos.conf )"
-while read path url; do
-  if [[ ! -d "$path" ]]; then
-    echo
-    echo ">>> Cloning $url ..."
-    echo
-    set -x
-    mkdir -p "$path"
-    git clone "$url" -o "$path"
-    set +x
-  fi
+echo
+echo "Updating the following repos:"
+echo
+echo "$repos"
+echo
 
-  echo
-  echo ">>> Updating $path ..."
-  echo
-  pushd "$path"
-    set -x
-    git pull --rebase
-    git submodule update --init --recursive
-    git remote prune origin || true
+for repo in $repos ; do
+  pushd $repo
+    if ! git pull --rebase ; then
+      failed_repos="$failed_repos $repo"
+      popd
+      continue
+    fi
+    if ! git submodule update --init --recursive ; then #--rebase
+      failed_repos="$failed_repos $repo"
+      popd
+      continue
+    fi
+    #git remote prune origin
     git-clean-merged-branches.sh -y
     git submodule foreach git remote prune origin
     git submodule foreach git-clean-merged-branches.sh -y
     git gc
-    set +x
+
+    make tags || true
   popd
-done <<<"$all_repos"
+done
 
-echo
-echo "Done."
-
-#~ all_repos="$( find . -maxdepth 3 \( \
-#~   -name .git -o \
-#~   -name .hg -o \
-#~   -name .svn \) \
-#~   -printf '  %P\n' | sort )"
-
-#~ repos="${@:-$all_repos}"
-#~
-#~ echo -en ">>> Update the following repos:\n\n$repos\n\n? (Y/n) -> "
-#~ read answer
-#~ if [[ $answer == n || $answer == N ]]; then
-#~   exit
-#~ fi
-#~
-#~ while read repo; do
-#~   rep="${repo%/*}"
-#~   echo
-#~   echo ">>> Updating $rep ..."
-#~   echo
-#~
-#~   pushd "$rep"
-#~     case "$repo" in
-#~     (*/.git)
-#~       set -x
-#~       git pull --rebase
-#~       git submodule update --init --recursive
-#~       git remote prune origin
-#~       git-clean-merged-branches.sh -y
-#~       git submodule foreach git remote prune origin
-#~       git submodule foreach git-clean-merged-branches.sh -y
-#~       git gc
-#~       set +x ;;
-#~     (*/.hg)
-#~       set -x
-#~       hg pull
-#~       set +x ;;
-#~     (*/.svn)
-#~       set -x
-#~       svn up
-#~       set +x ;;
-#~     (*)
-#~       echo ">>> Unknown repository type: $repo" ;;
-#~     esac
-#~   popd
-#~ done <<< "$repos"
+if [[ -n "$failed_repos" ]]; then
+  echo ""
+  echo "Unabled to update the following repositories:"
+  echo ""
+  echo "  $failed_repos"
+else
+  echo "OK"
+fi
