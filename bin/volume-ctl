@@ -8,7 +8,8 @@ set -eu
 # the sink index instead of the sink name.
 # (https://wiki.archlinux.org/index.php/PulseAudio/Examples)
 
-card=0
+card="$(pactl list short sinks | awk '/RUNNING/ { print $2; }' | head -1)"
+card="${card:-0}"
 
 cmd="${1:-}"
 case "$cmd" in
@@ -17,6 +18,8 @@ case "$cmd" in
 (m) pactl set-sink-mute "$card" toggle ;;
 (*) echo "Unknown control command: $1" >&2; exit 1 ;;
 esac
+
+#/usr/bin/notify-send -t 800 "Volume" "$volume"
 
 #~ card_num=$( arecord -l | grep -i logitech | cut -d' ' -f2 | sed 's/://' )
 #~ control='Headphone,0'
