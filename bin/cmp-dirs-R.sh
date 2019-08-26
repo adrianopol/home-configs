@@ -1,14 +1,19 @@
 #!/bin/bash
 
-set -eu -o pipefail
+set -eu
 
-left_dir="${1:-}"
-right_dir="${2:-}"
+ldir="${1:?}"
+rdir="${2:?}"
 
-for path in "$left_dir"/* "$left_dir"/.* ; do
-  f="${path#$left_dir/}"
-  lf="$left_dir/$f"
-  rf="$right_dir/$f"
+if ! [[ -d "$ldir" && -d "$rdir" ]]; then
+  echo "Usage: $0 <from_dir> <to_dir>"
+  exit 1
+fi
+
+for path in "$ldir"/* "$ldir"/.* ; do
+  f="${path#$ldir/}"
+  lf="$ldir/$f"
+  rf="$rdir/$f"
   [[ "$f" == '.' || "$f" == '..' ]] && continue
 
   echo "'$f'"
