@@ -21,8 +21,8 @@ for path in "$@"; do
   fi
   set -x
   time ffmpeg -i "$path" \
-    -vf scale=w=1000:h=1000:force_original_aspect_ratio=decrease \
-    -c:v libvpx-vp9 -b:v 2000k \
+    -vf scale=w=1200:h=1000:force_original_aspect_ratio=decrease \
+    -c:v libvpx -b:v 2000k \
     -c:a libvorbis -b:a 64k \
     -threads 4 \
     "$out_path"

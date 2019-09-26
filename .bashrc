@@ -5,6 +5,9 @@
 # that can't tolerate any output.  So make sure this doesn't display
 # anything or bad things will happen !
 
+# Test for an interactive shell.  There is no need to set anything
+# past this point for scp and rcp, and it's important to refrain from
+# outputting anything in those cases.
 if [[ $- != *i* ]] ; then
   return
 fi
@@ -94,6 +97,7 @@ man() {
 # Remove duplicates from PATH
 PATH=$( echo "$PATH" | awk -F: '{for (i=1;i<=NF;i++) { if (!x[$i]++) printf("%s:",$i); }}' | sed -re 's/:+$//' )
 
-if [[ -e /etc/profile.d/vte.sh && ( -n "$TILIX_ID" || -n "$VTE_VERSION" ) ]]; then
-  . /etc/profile.d/vte.sh
+tilix_vte_file="$( find /etc/profile.d/ -name 'vte*.sh' | sort | tail -1 )"
+if [[ -e "$tilix_vte_file" && ( -n "$TILIX_ID" || -n "$VTE_VERSION" ) ]]; then
+  . "$tilix_vte_file"
 fi
