@@ -19,31 +19,32 @@ get_running_sink_ind() {
   pactl list short sinks | awk '/RUNNING/ { print $1; }' | head -1
 }
 
-#card="$(pactl list short sinks | awk '/RUNNING/ { print $2; }' | head -1)"
 card="$(get_running_sink_ind)"
 card="${card:-0}"
 
 cmd="${1:-}"
 case "$cmd" in
-(u) pactl set-sink-volume "$card" +5% ;;
-(d) pactl set-sink-volume "$card" -5% ;;
+(u) pactl set-sink-volume "$card" +3% ;;
+(d) pactl set-sink-volume "$card" -3% ;;
 (m) pactl set-sink-mute "$card" toggle ;;
 (*) echo "Unknown control command: $1" >&2; exit 1 ;;
 esac
 
-/usr/bin/notify-send -t 800 "Volume" "$(get_volume_by_sink_ind "$card")"
+#/usr/bin/notify-send -t 800 "Volume" "$(get_volume_by_sink_ind "$card")"
+
+#--
 
 #~ card_num=$( arecord -l | grep -i logitech | cut -d' ' -f2 | sed 's/://' )
 #~ control='Headphone,0'
-
+#~
 #~ if [[ $(hostname) == alpha ]]; then
 #~   card_num=1
 #~ else
 #~   card_num=0
 #~ fi
-
+#~
 #~ control='Master,0'
-
+#~
 #~ cmd=${1:-}
 #~ amixer_cmd=
 #~
@@ -60,5 +61,5 @@ esac
 #~ amixer -c $card_num sset "$control" $amixer_cmd
 #~
 #~ volume=$( amixer -c $card_num get "$control" 2>&1 | grep -Po '\d+%' )
-
-#/usr/bin/notify-send -t 800 "Volume" "$volume"
+#~
+#~ /usr/bin/notify-send -t 800 "Volume" "$volume"

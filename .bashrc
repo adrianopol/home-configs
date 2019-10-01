@@ -26,9 +26,6 @@ shopt -s checkwinsize
 
 PROMPT_COMMAND='echo -ne "\033]0;[${USER}@${HOSTNAME}]:${PWD}\007"'
 
-#~if [[ -r /usr/share/git/git-prompt.sh ]]; then
-#~  . /usr/share/git/git-prompt.sh
-#~fi
 __get_git_branch() {
   git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \([[:print:]]\+\)/ \1/'
 }
@@ -94,10 +91,10 @@ man() {
       man "$@"
 }
 
-# Remove duplicates from PATH
-PATH=$( echo "$PATH" | awk -F: '{for (i=1;i<=NF;i++) { if (!x[$i]++) printf("%s:",$i); }}' | sed -re 's/:+$//' )
-
 tilix_vte_file="$( find /etc/profile.d/ -name 'vte*.sh' | sort | tail -1 )"
 if [[ -e "$tilix_vte_file" && ( -n "$TILIX_ID" || -n "$VTE_VERSION" ) ]]; then
   . "$tilix_vte_file"
 fi
+
+# Remove duplicates from PATH
+PATH=$( echo "$PATH" | awk -F: '{for (i=1;i<=NF;i++) { if (!x[$i]++) printf("%s:",$i); }}' | sed -re 's/:+$//' )
