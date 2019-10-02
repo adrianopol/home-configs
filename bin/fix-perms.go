@@ -80,7 +80,7 @@ func chmod_files_in_dir(dir string, dirs *[]string, files_changed, dirs_changed 
 		mode := f.Mode()
 		if mode.IsDir() {
 			if mode.Perm() != MODE_DIR {
-				fix_mode(f.Name(), mode.Perm(), MODE_DIR)
+				fix_mode(full_file_path, mode.Perm(), MODE_DIR)
 				*dirs_changed++
 			}
 			*dirs = append(*dirs, full_file_path)
@@ -113,8 +113,8 @@ func main() {
 	var files_changed, dirs_changed uint
 
 	for len(dirs) > 0 {
-		dir := dirs[len(dirs)-1]
-		dirs = dirs[:len(dirs)-1]
+		dir := dirs[0]
+		dirs = dirs[1:]
 		chmod_files_in_dir(dir, &dirs, &files_changed, &dirs_changed)
 	}
 
