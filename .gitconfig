@@ -24,7 +24,7 @@
 #	tool = kdiff3
 	tool = meld
 [push]
-	default = simple
+	default = current
 [user]
 	name = Andrew Petelin
 	email = adrianopol@gmail.com

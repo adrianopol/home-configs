@@ -57,6 +57,10 @@ nnoremap <F12> :e ++enc=cp1251<CR>
 " open tag in new tab
 nnoremap <C-Enter> <C-w><C-]><C-w>T
 
+" tabs
+"nnoremap <C-S-t> :tabnew<CR>
+"inoremap <C-S-t> <Esc>:tabnew<CR>
+"inoremap <C-S-w> <Esc>:tabclose<CR>
 " move tabs
 noremap <C-S-PageUp>   :tabmove -1<CR>
 noremap <C-S-PageDown> :tabmove +1<CR>
