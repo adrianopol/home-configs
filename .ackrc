@@ -1,7 +1,13 @@
---type-set=asciidoc:ext:asciidoc
+#
+# TYPES
+#
+
+--type-set=asciidoc:ext:adoc
+--type-set=diff:match:/\.diff|\.patch$/
 --type-set=ebuild:ext:ebuild
 --type-set=gettext:ext:po,pot
 --type-set=kconfig:is:Kconfig
+--type-set=trace:is:trace
 
 # Protobuf
 --type-set=proto:ext:proto
@@ -9,10 +15,16 @@
 
 # Code composer
 --type-set=ccspp:ext:pp
+--type-set=svg:ext:svg
+
+#
+# SETTINGS
+#
 
 # ignore some files
 --ignore-file=is:tags
 --ignore-file=ext:a
 --noccspp
-
+--nodiff
 --nopbgen
+--notrace

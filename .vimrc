@@ -7,16 +7,16 @@ endif
 
 set nocompatible
 
-set history=50
+set history=500
 set shiftwidth=2  " the number of space characters inserted for indentation
 set tabstop=2     " number of spaces that a <Tab> in the file counts for
 set expandtab     " to insert space characters whenever the tab key is pressed
 set smarttab      " delete tab, not a single space when pressing backspace
 set autoindent    " use the indent from the previous line
 
-set statusline=%F%m%r%h%w\ [HEX=\%02B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+set statusline=%F%m%r%h%w\ \ hex=\%2B\ \ pos=%02p%%\ \ line=%l/%L\ \ col=%v
 set laststatus=2  " tells when the last window also has a status line
-set scrolloff=1   " n lines to the curor when moving vertically
+set scrolloff=1   " n lines to the cursor when moving vertically
 
 set incsearch
 set hlsearch
