@@ -1,0 +1,28 @@
+### types
+
+--type-add=diff:*.{diff,patch}
+--type-add=ebuild:*.ebuild
+--type-add=gettext:*.po{,t}
+--type-add=kconfig:Kconfig
+--type-add=trace:trace
+
+# protobuf
+--type-add=pbgen:*.pb.{cc,h,go}
+--type-add=pbgen:*_pb2.py
+
+# code composer
+#~--type-add=ccspp:*.pp
+ 
+### setings
+
+# ignore some files
+--no-ignore-dot
+
+--type-not=diff
+--type-not=pbgen
+--type-not=trace
+
+--glob=!*.a
+--glob=!tags
+
+#~ --type-not=ccspp

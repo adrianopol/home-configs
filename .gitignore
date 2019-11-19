@@ -5,14 +5,15 @@
 !/.ackrc
 !/.bashrc
 !/.ctags
-!/.gemrc
 !/.gdbinit
+!/.gemrc
 !/.gitconfig
 !/.gitignore
 !/.grc/
 !/.irbrc
 !/.mplayer/
 !/.profile
+!/.ripgreprc
 !/.tmux.conf
 !/.vimrc
 !/github-png-samples/
