@@ -54,8 +54,14 @@ nnoremap <F5> :set list!<CR>
 " open with cp1251
 nnoremap <F12> :e ++enc=cp1251<CR>
 
+" duplicate tab
+nnoremap <C-Enter> :tab split<CR>
 " open tag in new tab
-nnoremap <C-Enter> <C-w><C-]><C-w>T
+"nnoremap <C-Enter> <C-w><C-]><C-w>T
+
+" goto definition (if only one), or show a list of possible definitions (if
+" many)
+nnoremap <C-]> g<C-]>
 
 " tabs
 "nnoremap <C-S-t> :tabnew<CR>
@@ -73,15 +79,13 @@ let html_use_css = 1 " the ':%TOhtml' command generates html without <font> tags
 au FileType * setl fo-=r
 
 " File types
-au BufRead,BufNewFile *.djhtml              setl ft=htmldjango
-au BufRead,BufNewFile *.rs                  setl ft=rust
 au BufRead,BufNewFile *.scala               setl ft=scala
 au BufRead,BufNewFile *.tex                 setl ft=tex
 au BufRead,BufNewFile *.vala,*.vapi         setl ft=vala
 au BufRead,BufNewFile SConstruct,SConscript setl ft=python
 au BufRead,BufNewFile *.1c                  setl ft=bsl
 
-au FileType asciidoc  setl textwidth=100
+au FileType asciidoc  setl textwidth=120
 "au FileType cpp       setl cc=101
 au FileType d         setl noexpandtab shiftwidth=2 tabstop=2
 au FileType go        setl noexpandtab shiftwidth=4 tabstop=4 nowrap

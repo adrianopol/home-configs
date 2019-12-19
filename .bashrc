@@ -76,7 +76,7 @@ source_scripts() {
   done
 }
 
-source_scripts "local.sh" "ptsecurity.sh"
+source_scripts "local.sh"
 
 # Colorful man pages.
 man() {

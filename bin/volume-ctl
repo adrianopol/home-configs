@@ -24,8 +24,8 @@ card="${card:-0}"
 
 cmd="${1:-}"
 case "$cmd" in
-(u) pactl set-sink-volume "$card" +3% ;;
-(d) pactl set-sink-volume "$card" -3% ;;
+(u) pactl set-sink-volume "$card" +4% ;;
+(d) pactl set-sink-volume "$card" -4% ;;
 (m) pactl set-sink-mute "$card" toggle ;;
 (*) echo "Unknown control command: $1" >&2; exit 1 ;;
 esac

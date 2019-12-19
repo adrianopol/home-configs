@@ -16,7 +16,7 @@
 ### setings
 
 # ignore some files
---no-ignore-dot
+--no-ignore
 
 --type-not=diff
 --type-not=pbgen

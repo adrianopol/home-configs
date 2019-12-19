@@ -25,7 +25,7 @@ for repo in $repos ; do
       popd
       continue
     fi
-    #git remote prune origin
+    git remote prune origin
     git-clean-merged-branches.sh -y
     git submodule foreach git remote prune origin
     git submodule foreach git-clean-merged-branches.sh -y
