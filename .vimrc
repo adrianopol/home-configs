@@ -21,9 +21,14 @@ set scrolloff=1   " n lines to the cursor when moving vertically
 set incsearch
 set hlsearch
 set noignorecase
-set cm=blowfish2  " best (requires >=vim-7.4.399)
 "set mouse=a
 set sessionoptions=blank,buffers,folds,help,options,sesdir,tabpages,winpos,winsize
+
+" encryption
+set cm=blowfish2  " best (requires >=vim-7.4.399)
+"set viminfo=
+"set nobackup
+"set nowritebackup
 
 let g:leave_my_textwidth_alone = 1 " fix for Gentoo :)
 let g:omni_sql_no_default_maps = 1 " disable sql omni completion
@@ -104,6 +109,10 @@ set include=^\\s*#\\s*include\ \\(<boost/\\)\\@!
 "imap <silent> <Tab> <C-r>=CleverTabs(4)<cr>
 
 if has('gui_running')
+  "TODO
+  "if &diff
+  "  set lines=999 columns=999
+  "endif
   colorscheme paq
   set number
   set numberwidth=5

@@ -12,6 +12,7 @@
 	pure = pull --rebase
 	graff = log --graph --all --decorate
 	br-sorted = branch -a --sort=-committerdate
+  lg = log -m -p
 [color]
 	ui = auto
 [core]
