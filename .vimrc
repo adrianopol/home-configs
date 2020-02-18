@@ -95,6 +95,7 @@ au FileType asciidoc  setl textwidth=120
 au FileType d         setl noexpandtab shiftwidth=2 tabstop=2
 au FileType go        setl noexpandtab shiftwidth=4 tabstop=4 nowrap
 au FileType make      setl noexpandtab shiftwidth=8 tabstop=8
+au FileType markdown  setl formatoptions-=l
 
 " Go
 "let g:go_fmt_autosave = 0
