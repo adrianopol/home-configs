@@ -1,5 +1,5 @@
 syntax on
-colorscheme default
+colorscheme paq-minimal
 if &diff
   colorscheme blue
 endif
@@ -109,7 +109,7 @@ if has('gui_running')
   "if &diff
   "  set lines=999 columns=999
   "endif
-  colorscheme paq
+  colorscheme paq-minimal
   set number
   set numberwidth=5
 
