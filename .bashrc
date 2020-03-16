@@ -51,10 +51,10 @@ __get_PS1() {
 
   echo -n "\[$bldylw\][[ \
 \[$user_color\]\u\[$txtrst\]@\[$bldgrn\]\h\[$txtrst\] \
-\[$bldblu\]\w\[$bldylw\]\$(__get_git_branch) ]]\[$txtrst\] "
-#~  echo -n "\[$bldylw\]--- \
+\[$bldblu\]\w\[$bldylw\] ]]\[$txtrst\] "
+#~  echo -n "\[$bldylw\][[ \
 #~\[$user_color\]\u\[$txtrst\]@\[$bldgrn\]\h\[$txtrst\] \
-#~\[$bldblu\]\w\[$bldylw\]\$(__get_git_branch) ---\[$txtrst\]\n\[$bldcyn\]>>>\[$txtrst\] "
+#~\[$bldblu\]\w\[$bldylw\]\$(__get_git_branch) ]]\[$txtrst\] "
 }
 
 PS1="$(__get_PS1)"

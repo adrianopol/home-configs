@@ -32,6 +32,7 @@ set cm=blowfish2  " best (requires >=vim-7.4.399)
 
 let g:leave_my_textwidth_alone = 1 " fix for Gentoo :)
 let g:omni_sql_no_default_maps = 1 " disable sql omni completion
+let g:NERDTreeNodeDelimiter = "\u00a0" " remove '^G' when syntax is off
 
 "---------- Mappings ----------"
 
@@ -47,17 +48,11 @@ nnoremap <F2> :set invpaste paste?<CR>
 inoremap <F2> <C-O><F2>
 set pastetoggle=<F2>
 
-" fuzzy finder
-nnoremap <F3> :FufCoverageFile<CR>
-
 " remove trailing spaces
 nnoremap <F4> :%s/\s\+$//e<CR>
 
 " toggle hidden characters
 nnoremap <F5> :set list!<CR>
-
-" open with cp1251
-nnoremap <F12> :e ++enc=cp1251<CR>
 
 " duplicate tab
 nnoremap <C-Enter> :tab split<CR>
