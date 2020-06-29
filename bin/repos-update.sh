@@ -3,7 +3,7 @@
 set -eu
 set -o pipefail
 
-all_repos="$( find -mindepth 2 -maxdepth 2 -type d -name .git -printf "%P\n" | sort | sed -re 's,/.*$,,' )"
+all_repos="$( find -mindepth 1 -maxdepth 2 -type d -name .git -printf "./%P\n" | sort | sed -re 's,/.git$,,' )"
 repos="${@:-$all_repos}"
 failed_repos=
 
@@ -15,7 +15,7 @@ echo
 
 for repo in $repos ; do
   pushd $repo
-    if ! git pull --rebase ; then
+    if ! git pull --rebase --tags ; then
       failed_repos="$failed_repos $repo"
       popd
       continue

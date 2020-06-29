@@ -67,16 +67,13 @@ export LANG="en_US.utf-8"
 export EDITOR="vim"
 
 source_scripts() {
-  local scripts="$@"
   local s
-  for s in $scripts; do
-    if [[ -r ~/.bash_scripts/"$s" ]]; then
-      . ~/.bash_scripts/"$s"
-    fi
+  for s in "$@"; do
+    if [[ -r "$s" ]]; then . "$s"; fi
   done
 }
 
-source_scripts "local.sh"
+source_scripts ~/.aliases.bash ~/.bash_scripts/local.sh
 
 # Colorful man pages.
 man() {

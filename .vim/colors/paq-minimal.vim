@@ -13,7 +13,7 @@ endif
 let g:colors_name = "paq-minimal"
 
 " match trailing whitespace, except when typing at the end of a line
-hi ExtraWhitespace      ctermbg=red guibg=red
+hi ExtraWhitespace ctermbg=red guibg=red
 au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 au InsertLeave * match ExtraWhitespace /\s\+$/
 
@@ -62,16 +62,19 @@ if has("gui_running")
 end
 
 " disable highlight for all other types
-hi! link Character      Normal
-hi! link Constant       Normal
-hi! link Delimiter      Normal
-hi! link Function       Normal
-hi! link Identifier     Normal
-hi! link Number         Normal
-hi! link PreProc        Normal
-hi! link Special        Normal
-hi! link SpecialChar    Normal
-hi! link SpecialComment Normal
-hi! link Statement      Normal
-hi! link String         Normal
-hi! link Type           Normal
+hi! link Character          Normal
+hi! link Constant           Normal
+hi! link Delimiter          Normal
+hi! link Function           Normal
+hi! link Identifier         Normal
+hi! link Number             Normal
+hi! link PreProc            Normal
+hi! link Special            Normal
+hi! link SpecialChar        Normal
+hi! link SpecialComment     Normal
+hi! link Statement          Normal
+hi! link String             Normal
+hi! link Type               Normal
+
+" python: docstring
+au FileType python syn region Comment start=/"""/ end=/"""/

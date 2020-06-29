@@ -30,7 +30,7 @@ case "$cmd" in
 (*) echo "Unknown control command: $1" >&2; exit 1 ;;
 esac
 
-/usr/bin/notify-send -t 800 "Volume: $(get_volume_by_sink_ind "$card")%"
+#~/usr/bin/notify-send -t 800 "Volume: $(get_volume_by_sink_ind "$card")%"
 
 #--
 

@@ -9,7 +9,7 @@
 	dfw = diff --color-words
 	dfc = diff --color-words=.
 	dfcr = diff --word-diff-regex=.
-	pure = pull --rebase
+	pure = pull --rebase --tags
 	graff = log --graph --all --decorate
 	br-sorted = branch -a --sort=-committerdate
   lg = log -m -p

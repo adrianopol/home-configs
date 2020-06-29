@@ -14,7 +14,8 @@ set expandtab     " to insert space characters whenever the tab key is pressed
 set smarttab      " delete tab, not a single space when pressing backspace
 set autoindent    " use the indent from the previous line
 
-set statusline=%F%m%r%h%w\ \ hex=\%2B\ \ pos=%02p%%\ \ line=%l/%L\ \ col=%v
+set statusline=%F%m%r%h%w\ \ hex=\%2B\ \ pos=%02p%%\ \ line=%03l/%03L\ \ col=%v
+let &statusline.='  V=%{abs(line(".") - line("v")) + 1}'
 set laststatus=2  " tells when the last window also has a status line
 set scrolloff=1   " n lines to the cursor when moving vertically
 
@@ -85,7 +86,7 @@ au BufRead,BufNewFile *.vala,*.vapi         setl ft=vala
 au BufRead,BufNewFile SConstruct,SConscript setl ft=python
 au BufRead,BufNewFile *.1c                  setl ft=bsl
 
-au FileType asciidoc  setl textwidth=120
+au FileType asciidoc,markdown setl textwidth=120
 "au FileType cpp       setl cc=101
 au FileType d         setl noexpandtab shiftwidth=2 tabstop=2
 au FileType go        setl noexpandtab shiftwidth=4 tabstop=4 nowrap
