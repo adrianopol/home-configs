@@ -9,10 +9,13 @@ out_gif="${4:-"${file%.*}.gif"}"
 
 cropped_file="${out_gif%.gif}.tmp.${file##*.}"
 
+#vencoder=copy
+venc=libx264
+
 src="$file"
 if [[ -n "$ss" ]] && [[ -n "$to" ]]; then
   set -x
-  ffmpeg -i "$file" -an -c:v copy -ss "$ss" -to "$to" "$cropped_file"
+  ffmpeg -i "$file" -an -c:v "$venc" -ss "$ss" -to "$to" "$cropped_file"
   set +x
   src="$cropped_file"
 fi
@@ -20,7 +23,7 @@ fi
 opts=(
   -i "$src"
   -r 7
-  -vf 'scale=250:-1,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse'
+  -vf 'scale=350:-1,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse'
 )
 
 set -x
