@@ -1,0 +1,25 @@
+#!/bin/bash
+
+file="$( mktemp )"
+
+cat >> $file <<EOF
+set title "www-client/chromium build time"
+set xtics nomirror rotate by -45
+set xdata time
+set timefmt "%Y-%m-%d"
+set ylabel "hours"
+set style data linespoints
+plot '-' using 1:2 #smooth csplines
+EOF
+
+# second rg also removes unfinished '>>> emerge' lines
+rg '(>>> emerge |::: completed emerge ).*/chromium-' /var/log/emerge.log | rg --multiline '^(\d+):  >>> emerge.*\n^(\d+):  ::: completed emerge.*' -r '$1 $2' | \
+  ruby -an -e 'require "date"; b, e = $F[0].to_i, $F[1].to_i; puts "  #{Time.at(b).to_date} #{(e-b)/60.0/60.0}"' >> $file
+
+cat >>$file <<EOF
+  e
+pause -1
+EOF
+
+gnuplot $file
+rm $file
