@@ -3,7 +3,7 @@
 set -eu
 set -o pipefail
 
-all_repos="$( find -mindepth 1 -maxdepth 2 -type d -name .git -printf "./%P\n" | sort | sed -re 's,/.git$,,' )"
+all_repos="$( find -mindepth 1 -type d -name .git -printf "./%P\n" | sort | sed -re 's,/.git$,,' )"
 repos="${@:-$all_repos}"
 if [[ -d .git ]]; then # update current repo
   repos=.

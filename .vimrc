@@ -114,7 +114,7 @@ if has('gui_running')
   set number
   set numberwidth=5
 
-  set guifont=xos4\ Terminus\ 9
+  set guifont=Terminus\ 9
 
   set showtabline=2
 

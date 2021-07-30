@@ -73,7 +73,7 @@ source_scripts() {
   done
 }
 
-source_scripts ~/.aliases.bash ~/.bash_scripts/local.sh
+source_scripts ~/.aliases.bash ~/.bash_scripts/local.sh ~/.bash_scripts/ns.sh
 
 # Colorful man pages.
 man() {
@@ -88,10 +88,13 @@ man() {
       man "$@"
 }
 
+# tilix
 tilix_vte_file="$( find /etc/profile.d/ -name 'vte*.sh' | sort | tail -1 )"
 if [[ -e "$tilix_vte_file" && ( -n "$TILIX_ID" || -n "$VTE_VERSION" ) ]]; then
   . "$tilix_vte_file"
 fi
+
+###
 
 # Remove duplicates from PATH
 PATH=$( echo "$PATH" | awk -F: '{for (i=1;i<=NF;i++) { if (!x[$i]++) printf("%s:",$i); }}' | sed -re 's/:+$//' )
