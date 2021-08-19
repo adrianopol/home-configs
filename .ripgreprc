@@ -1,3 +1,7 @@
+--heading
+--line-number
+--color=always
+
 ### types
 
 --type-add=diff:*.{diff,patch}

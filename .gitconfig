@@ -25,9 +25,6 @@
 	tool = meld
 [push]
 	default = current
-[user]
-	name = Andrew Petelin
-	email = adrianopol@gmail.com
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
