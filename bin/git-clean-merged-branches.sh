@@ -7,7 +7,7 @@ case "${1:-}" in
 (*)  assume_yes=n ;;
 esac
 
-br_exclude="(\*|master|develop)"
+br_exclude="(\*|master|main|develop)"
 
 brs="$( git branch --merged | grep -Pv "$br_exclude" || true )"
 
