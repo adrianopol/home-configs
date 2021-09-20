@@ -77,4 +77,4 @@ hi! link String             Normal
 hi! link Type               Normal
 
 " python: docstring
-au FileType python syntax region Comment start=/^\s*"""/ end=/"""/
+au FileType python syntax region Comment start=/^\s*r\?"""/ end=/"""/

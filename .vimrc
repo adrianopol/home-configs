@@ -74,6 +74,15 @@ noremap <C-S-PageDown> :tabmove +1<CR>
 
 "----- Language-specific settings -----"
 
+" Go
+let $GOPATH = $HOME . '/work/go' " XXX
+let g:go_fmt_autosave = 0
+let g:go_fmt_fail_silently = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_structs = 1
+" run `go fmt`
+nnoremap <F12> :GoFmt<CR>
+
 let html_use_css = 1 " the ':%TOhtml' command generates html without <font> tags
 
 " Disable auto-commention
@@ -92,12 +101,6 @@ au FileType d         setl noexpandtab shiftwidth=2 tabstop=2
 au FileType go        setl noexpandtab shiftwidth=4 tabstop=4 nowrap
 au FileType make      setl noexpandtab shiftwidth=8 tabstop=8
 au FileType markdown  setl formatoptions-=l
-
-" Go
-"let g:go_fmt_autosave = 0
-"let g:go_fmt_fail_silently = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_structs = 1
 
 " Prevent vim from reading boost include files
 set include=^\\s*#\\s*include\ \\(<boost/\\)\\@!
