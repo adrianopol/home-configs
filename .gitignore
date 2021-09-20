@@ -38,3 +38,4 @@
 !/bin/
 /bin/encrypt_files.sh
 /bin/rm-tex-tmp
+/bin/sync-music-to-android.sh
