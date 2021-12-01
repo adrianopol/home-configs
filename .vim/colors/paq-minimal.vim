@@ -76,5 +76,44 @@ hi! link Statement          Normal
 hi! link String             Normal
 hi! link Type               Normal
 
+hi! link markdownH1                   Normal
+hi! link markdownH2                   Normal
+hi! link markdownH3                   Normal
+hi! link markdownH4                   Normal
+hi! link markdownH5                   Normal
+hi! link markdownH6                   Normal
+hi! link markdownHeadingRule          Normal
+hi! link markdownH1Delimiter          Normal
+hi! link markdownH2Delimiter          Normal
+hi! link markdownH3Delimiter          Normal
+hi! link markdownH4Delimiter          Normal
+hi! link markdownH5Delimiter          Normal
+hi! link markdownH6Delimiter          Normal
+hi! link markdownHeadingDelimiter     Normal
+hi! link markdownOrderedListMarker    Normal
+hi! link markdownListMarker           Normal
+hi! link markdownBlockquote           Normal
+hi! link markdownRule                 Normal
+hi! link markdownFootnote             Normal
+hi! link markdownFootnoteDefinition   Normal
+hi! link markdownLinkText             Normal
+hi! link markdownIdDeclaration        Normal
+hi! link markdownId                   Normal
+hi! link markdownAutomaticLink        Normal
+hi! link markdownUrl                  Normal
+hi! link markdownUrlTitle             Normal
+hi! link markdownIdDelimiter          Normal
+hi! link markdownUrlDelimiter         Normal
+hi! link markdownUrlTitleDelimiter    Normal
+hi! link markdownItalic               Normal
+hi! link markdownItalicDelimiter      Normal
+hi! link markdownBold                 Normal
+hi! link markdownBoldDelimiter        Normal
+hi! link markdownBoldItalic           Normal
+hi! link markdownBoldItalicDelimiter  Normal
+hi! link markdownCodeDelimiter        Normal
+hi! link markdownEscape               Normal
+hi! link markdownError                Normal
+
 " python: docstring
 au FileType python syntax region Comment start=/^\s*r\?"""/ end=/"""/
