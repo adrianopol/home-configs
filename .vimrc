@@ -25,6 +25,8 @@ set noignorecase
 "set mouse=a
 set sessionoptions=blank,buffers,folds,help,options,sesdir,tabpages,winpos,winsize
 
+set completeopt-=preview
+
 " encryption
 set cm=blowfish2  " best (requires >=vim-7.4.399)
 "set viminfo=
@@ -78,6 +80,7 @@ noremap <C-S-PageDown> :tabmove +1<CR>
 let $GOPATH = $HOME . '/work/go' " XXX
 let g:go_fmt_autosave = 0
 let g:go_fmt_fail_silently = 1
+let g:go_gopls_deep_completion = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_structs = 1
 " run `go fmt`
@@ -96,7 +99,7 @@ au BufRead,BufNewFile SConstruct,SConscript setl ft=python
 au BufRead,BufNewFile *.1c                  setl ft=bsl
 
 au FileType asciidoc,markdown setl textwidth=120
-"au FileType cpp       setl cc=101
+au FileType cpp       setl shiftwidth=4 tabstop=4 "cc=101
 au FileType d         setl noexpandtab shiftwidth=2 tabstop=2
 au FileType go        setl noexpandtab shiftwidth=4 tabstop=4 nowrap
 au FileType make      setl noexpandtab shiftwidth=8 tabstop=8

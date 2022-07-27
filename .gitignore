@@ -1,9 +1,10 @@
-*.sw[op]
+*.sw[nop]
 
 /*
 
 !/.ackrc
 !/.aliases.bash
+!/.bash_profile
 !/.bashrc
 !/.ctags
 !/.gdbinit
@@ -36,6 +37,8 @@
 !/.vim/syntax
 
 !/bin/
+/bin/clean-local-cache
 /bin/encrypt_files.sh
+/bin/fix-perms
 /bin/rm-tex-tmp
 /bin/sync-music-to-android.sh

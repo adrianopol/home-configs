@@ -26,10 +26,6 @@ shopt -s checkwinsize
 
 PROMPT_COMMAND='echo -ne "\033]0;[${USER}@${HOSTNAME}]:${PWD}\007"'
 
-__get_git_branch() {
-  git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \([[:print:]]\+\)/ \1/'
-}
-
 __get_PS1() {
   local bldred='\e[1;31m' # Red
   local bldgrn='\e[1;32m' # Green
@@ -47,14 +43,11 @@ __get_PS1() {
 
   # use different colors for root and others
   local user_color="$txtcyn"
-  [[ $EUID == 0 ]] && user_color="$bldred"
+  if [[ $EUID == 0 ]]; then user_color="$bldred" ; fi
 
   echo -n "\[$bldylw\][[ \
 \[$user_color\]\u\[$txtrst\]@\[$bldgrn\]\h\[$txtrst\] \
 \[$bldblu\]\w\[$bldylw\] ]]\[$txtrst\] "
-#~  echo -n "\[$bldylw\][[ \
-#~\[$user_color\]\u\[$txtrst\]@\[$bldgrn\]\h\[$txtrst\] \
-#~\[$bldblu\]\w\[$bldylw\]\$(__get_git_branch) ]]\[$txtrst\] "
 }
 
 PS1="$(__get_PS1)"
@@ -62,7 +55,7 @@ PS1="$(__get_PS1)"
 unset __get_PS1
 
 export DEFAULT_CHARSET="UTF-8"
-export PATH="$HOME/bin:$PATH"
+export PATH="$PATH:$HOME/bin"
 export LANG="en_US.utf-8"
 export EDITOR="vim"
 
@@ -73,7 +66,7 @@ source_scripts() {
   done
 }
 
-source_scripts ~/.aliases.bash ~/.bash_scripts/local.sh ~/.bash_scripts/ns.sh
+source_scripts ~/.aliases.bash ~/.bash_scripts/local.sh ~/.bash_scripts/insales.sh
 
 # Colorful man pages.
 man() {

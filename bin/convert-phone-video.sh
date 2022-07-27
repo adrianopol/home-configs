@@ -8,7 +8,7 @@ set -eux
 
 scale=y
 
-dest_prefix=
+dest_prefix=.
 if [[ -d "${1:-}" ]]; then
   dest_prefix="$1"
   shift
