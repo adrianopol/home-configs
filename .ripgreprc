@@ -16,7 +16,7 @@
 
 # code composer
 #~--type-add=ccspp:*.pp
- 
+
 ### setings
 
 # ignore some files
@@ -25,6 +25,7 @@
 --type-not=diff
 --type-not=pbgen
 --type-not=trace
+--type-not=svg
 
 --glob=!*.a
 --glob=!tags
