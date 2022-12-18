@@ -66,7 +66,11 @@ source_scripts() {
   done
 }
 
-source_scripts ~/.aliases.bash ~/.bash_scripts/local.sh ~/.bash_scripts/insales.sh
+source_scripts \
+  ~/.aliases.bash \
+  ~/.bash_scripts/local.sh \
+  ~/.bash_scripts/roc.sh \
+  ~/.bash_scripts/insales.sh
 
 # Colorful man pages.
 man() {
@@ -86,6 +90,8 @@ tilix_vte_file="$( find /etc/profile.d/ -name 'vte*.sh' | sort | tail -1 )"
 if [[ -e "$tilix_vte_file" && ( -n "$TILIX_ID" || -n "$VTE_VERSION" ) ]]; then
   . "$tilix_vte_file"
 fi
+
+NIX_PATH="$NIX_PATH:$HOME/nix/nixpkgs"
 
 ###
 

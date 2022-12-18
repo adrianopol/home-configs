@@ -43,7 +43,7 @@ if has("gui_running")
   " thumb of the scrollbar in the popup
   hi PMenuThumb          guibg=#aaaaaa gui=NONE
 
-  hi Comment             guifg=#777777 gui=NONE
+  hi Comment             guifg=#696969 gui=NONE
   hi Error               guifg=#ffffff guibg=#990000 gui=NONE
 
   hi Title               guifg=#ff1975 gui=NONE

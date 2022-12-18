@@ -4,15 +4,15 @@
 	ci = commit
 	co = checkout
 	df = diff
-	st = status
 	hh = stash
+	st = status
 	dfw = diff --color-words
 	dfc = diff --color-words=.
 	dfcr = diff --word-diff-regex=.
 	pure = pull --rebase --tags
 	graff = log --graph --all --decorate
 	br-sorted = branch -a --sort=-committerdate
-  lg = log -m -p
+	lg = log -p -w
 [color]
 	ui = auto
 [core]

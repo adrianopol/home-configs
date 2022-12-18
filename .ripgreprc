@@ -1,3 +1,4 @@
+# make suitable for less command
 --heading
 --line-number
 --color=always
@@ -17,7 +18,7 @@
 # code composer
 #~--type-add=ccspp:*.pp
 
-### setings
+### other
 
 # ignore some files
 --no-ignore
@@ -27,7 +28,10 @@
 --type-not=trace
 --type-not=svg
 
+# ignore individual files
 --glob=!*.a
+--glob=!*.min.js
+--glob=!compile_commands.json
 --glob=!tags
 
 #~ --type-not=ccspp
