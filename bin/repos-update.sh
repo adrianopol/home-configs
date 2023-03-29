@@ -40,7 +40,7 @@ for repo in $repos ; do
     git-clean-merged-branches.sh -y
     git submodule foreach git remote prune origin
     git submodule foreach git-clean-merged-branches.sh -y
-    git gc
+    #~git gc
 
     make tags || true
   popd

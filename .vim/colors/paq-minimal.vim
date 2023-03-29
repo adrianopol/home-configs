@@ -1,11 +1,12 @@
 " Vim color scheme
 "
 " Name:        paq-minimal.vim
-" Maintainer:  Andrew Petelin <adrianopol@gmail.com>
+" Maintainer:  Andrew Petelin <adrianopol@rbox.me>
 " License:     public domain
 
 hi clear
 set background=dark
+
 if exists("syntax_on")
   syntax reset
 endif
@@ -17,15 +18,19 @@ hi ExtraWhitespace ctermbg=red guibg=red
 au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 au InsertLeave * match ExtraWhitespace /\s\+$/
 
+" python: docstring
+au FileType python syntax region Comment start=/^\s*r\?"""/ end=/"""/
+
 if has("gui_running")
-  hi Normal              guifg=#f7f2ed guibg=#191919
+  hi Normal              guifg=#eeeeee guibg=#1c1c1c
 
   hi Cursor              guibg=#fbe1fc
   hi CursorColumn        guibg=#292929
   hi CursorLine          guibg=#222222
-  hi CursorLineNr        guifg=#777777 gui=bold term=bold ctermfg=14
+  hi CursorLineNr        guifg=#777777 gui=bold
   hi LineNr              guifg=#444444 guibg=#0d0d0d
   hi Search              guibg=#ffff00
+  "hi Title               guifg=#ff1975 gui=NONE
   hi Visual              guibg=#3b3b3b
 
   " line used for closed folds
@@ -43,23 +48,17 @@ if has("gui_running")
   " thumb of the scrollbar in the popup
   hi PMenuThumb          guibg=#aaaaaa gui=NONE
 
-  hi Comment             guifg=#696969 gui=NONE
+  hi Comment             guifg=#626262 gui=NONE
   hi Error               guifg=#ffffff guibg=#990000 gui=NONE
-
-  hi Title               guifg=#ff1975 gui=NONE
 
   hi DiffAdd             guifg=#e6e1dc guibg=#144212 gui=NONE
   hi DiffDelete          guifg=#e6e1dc guibg=#660000 gui=NONE
   hi DiffText            guifg=#ffffff guibg=#ff0000 gui=NONE
-
-  hi xmlTag              guifg=#e8bf6a gui=NONE
-  hi xmlTagName          guifg=#e8bf6a gui=NONE
-  hi xmlEndTag           guifg=#e8bf6a gui=NONE
-
-  hi link htmlTag        xmlTag
-  hi link htmlTagName    xmlTagName
-  hi link htmlEndTag     xmlEndTag
 end
+
+hi Normal   ctermfg=255 ctermbg=234
+hi Comment  ctermfg=241 ctermbg=NONE
+hi LineNr   ctermfg=238 ctermbg=0
 
 " disable highlight for all other types
 hi! link Character          Normal
@@ -74,46 +73,26 @@ hi! link SpecialChar        Normal
 hi! link SpecialComment     Normal
 hi! link Statement          Normal
 hi! link String             Normal
+hi! link Title              Normal
 hi! link Type               Normal
 
-hi! link markdownH1                   Normal
-hi! link markdownH2                   Normal
-hi! link markdownH3                   Normal
-hi! link markdownH4                   Normal
-hi! link markdownH5                   Normal
-hi! link markdownH6                   Normal
-hi! link markdownHeadingRule          Normal
-hi! link markdownH1Delimiter          Normal
-hi! link markdownH2Delimiter          Normal
-hi! link markdownH3Delimiter          Normal
-hi! link markdownH4Delimiter          Normal
-hi! link markdownH5Delimiter          Normal
-hi! link markdownH6Delimiter          Normal
-hi! link markdownHeadingDelimiter     Normal
-hi! link markdownOrderedListMarker    Normal
-hi! link markdownListMarker           Normal
-hi! link markdownBlockquote           Normal
-hi! link markdownRule                 Normal
-hi! link markdownFootnote             Normal
-hi! link markdownFootnoteDefinition   Normal
-hi! link markdownLinkText             Normal
-hi! link markdownIdDeclaration        Normal
-hi! link markdownId                   Normal
-hi! link markdownAutomaticLink        Normal
-hi! link markdownUrl                  Normal
-hi! link markdownUrlTitle             Normal
-hi! link markdownIdDelimiter          Normal
-hi! link markdownUrlDelimiter         Normal
-hi! link markdownUrlTitleDelimiter    Normal
-hi! link markdownItalic               Normal
-hi! link markdownItalicDelimiter      Normal
-hi! link markdownBold                 Normal
-hi! link markdownBoldDelimiter        Normal
-hi! link markdownBoldItalic           Normal
-hi! link markdownBoldItalicDelimiter  Normal
-hi! link markdownCodeDelimiter        Normal
-hi! link markdownEscape               Normal
-hi! link markdownError                Normal
+hi! link xmlEndTag          Normal
+hi! link xmlTag             Normal
+hi! link xmlTagName         Normal
 
-" python: docstring
-au FileType python syntax region Comment start=/^\s*r\?"""/ end=/"""/
+hi! link htmlTag            xmlTag
+hi! link htmlTagName        xmlTagName
+hi! link htmlEndTag         xmlEndTag
+
+hi! link htmlBold           Normal
+hi! link htmlEndTag         Normal
+hi! link htmlH1             Normal
+hi! link htmlH2             Normal
+hi! link htmlH3             Normal
+hi! link htmlH4             Normal
+hi! link htmlH5             Normal
+hi! link htmlH6             Normal
+hi! link htmlItalic         Normal
+hi! link htmlLink           Normal
+
+hi! link markdownError      Normal

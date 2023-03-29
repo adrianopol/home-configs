@@ -2,7 +2,6 @@
 
 /*
 
-!/.ackrc
 !/.aliases.bash
 !/.bash_profile
 !/.bashrc
@@ -15,6 +14,7 @@
 !/.irbrc
 !/.mplayer/
 !/.profile
+!/.psqlrc
 !/.ripgreprc
 !/.tmux.conf
 !/.vimrc
@@ -22,6 +22,11 @@
 
 !/.config/
 /.config/*
+
+!/.config/geeqie
+/.config/geeqie/*
+!/.config/geeqie/applications/
+
 !/.config/mpv/
 !/.config/youtube-dl/
 
@@ -38,6 +43,7 @@
 
 !/bin/
 /bin/clean-local-cache
+/bin/dell-pa-switch-profile.sh
 /bin/encrypt_files.sh
 /bin/fix-perms
 /bin/rm-tex-tmp
