@@ -10,9 +10,9 @@
 	dfc = diff --color-words=.
 	dfcr = diff --word-diff-regex=.
 	pure = pull --rebase --tags
-	graff = log --graph --all --decorate
+	lgraph = log --graph --all --decorate
+	lg = log --date=\"format:%y%m%d.%H%M\" --pretty=\"format:%C(yellow)%h%C(reset) %cd %C(magenta)%<(15,trunc)%aL%C(reset) %s %C(auto)%d\"
 	br-sorted = branch -a --sort=-committerdate
-	lg = log -p -w
 [color]
 	ui = auto
 [core]

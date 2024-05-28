@@ -10,14 +10,18 @@ if ! [[ -d "$ldir" && -d "$rdir" ]]; then
   exit 1
 fi
 
-for path in "$ldir"/* "$ldir"/.* ; do
-  f="${path#$ldir/}"
+files="$( find -maxdepth 1 -mindepth 1 -printf '%P\n' | sort )"
+
+while read f ; do
+  echo "$f"
   lf="$ldir/$f"
   rf="$rdir/$f"
-  [[ "$f" == '.' || "$f" == '..' ]] && continue
 
-  echo "'$f'"
-  if [[ ! -f "$lf" || ( -f "$lf" && $(diff -q "$lf" "$rf" >/dev/null) ) ]] ; then
-    meld "$lf" "$rf"
+  if [[ -f "$lf" ]] && diff -q "$lf" "$rf" >/dev/null ; then
+    echo ">>> $lf == $rf"
+    continue
   fi
-done
+
+  echo ">>> $lf <-> $rf ..."
+  meld "$lf" "$rf" || true
+done <<< "$files"
