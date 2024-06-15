@@ -69,8 +69,7 @@ source_scripts() {
 source_scripts \
   ~/.aliases.bash \
   ~/.bash_scripts/local.sh \
-  ~/.bash_scripts/roc.sh \
-  ~/.bash_scripts/insales.sh
+  ~/.bash_scripts/roc.sh
 
 # Colorful man pages.
 man() {

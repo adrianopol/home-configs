@@ -24,8 +24,8 @@ for path in "$@"; do
   fi
   args=(
     -i "$path"
-    -c:v libvpx -b:v 2000k
-    -c:a libvorbis -b:a 64k
+    -c:v libvpx -b:v 3000k
+    -c:a libvorbis -b:a 128k
     -threads 4
   )
   if [[ "$scale" == y ]]; then
