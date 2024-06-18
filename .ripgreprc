@@ -10,6 +10,8 @@
 --type-add=gettext:*.po{,t}
 --type-add=kconfig:Kconfig
 --type-add=trace:trace
+--type-add=python:{SConstruct,SConscript}
+--type-add=py:include:python
 
 # protobuf
 --type-add=pbgen:*.pb.{cc,h,go}
