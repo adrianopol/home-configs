@@ -26,10 +26,11 @@ while read f ; do
     continue
   fi
 
-  if [[ -d "$lf" && -d "$rf" ]] && diff -rq "$lf" "$rf" >/dev/null ; then
-    log "$lf == $rf"
-    continue
-  fi
+  # FIXME: diff -r takes too long on large directories
+  #if [[ -d "$lf" && -d "$rf" ]] && diff -rq "$lf" "$rf" >/dev/null ; then
+  #  log "$lf == $rf"
+  #  continue
+  #fi
   if [[ -f "$lf" ]] && diff -q "$lf" "$rf" >/dev/null ; then
     log "$lf == $rf"
     continue

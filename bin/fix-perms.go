@@ -25,15 +25,14 @@ const (
 )
 
 var EXCLUDE = []string{
-	".asciidoc",
-	".jpg",
-	".m3u8",
-	".mp3",
-	".mp4",
-	".ogg",
-	".png",
-	".txt",
-	".webm",
+	".asciidoc", ".adoc", ".txt", ".md", ".rst", ".doc", ".odt",
+	".html", ".css",
+	".gif", ".jpg", ".png",
+	".m3u8", ".mp3", ".ogg",
+	".avi", ".mp4", ".webm",
+	".djvu", ".epub", ".fb2", ".pdf",
+	".zip", ".gz", ".bz2", ".bzip2", ".tgz", ".tbz2", ".tzst",
+	".cpp", ".go", ".java", ".c",
 }
 
 var NO_ACT = true

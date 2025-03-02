@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-set -eu
+set -eux
 
 # The numbering of sinks is not guaranteed to be persistent, so all sinks in the
 # default.pa file should be identified by the name.
@@ -27,7 +27,7 @@ case "$cmd" in
 (u) pactl set-sink-volume "$card" +4% ;;
 (d) pactl set-sink-volume "$card" -4% ;;
 (m) pactl set-sink-mute "$card" toggle ;;
-(*) echo "Unknown control command: $1" >&2; exit 1 ;;
+(*) echo "Unknown control command: $cmd" >&2; exit 1 ;;
 esac
 
 #~/usr/bin/notify-send -t 800 "Volume: $(get_volume_by_sink_ind "$card")%"

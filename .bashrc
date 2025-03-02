@@ -1,18 +1,7 @@
-# /etc/skel/.bashrc
-#
-# This file is sourced by all *interactive* bash shells on startup,
-# including some apparently interactive shells such as scp and rcp
-# that can't tolerate any output.  So make sure this doesn't display
-# anything or bad things will happen !
+# Test for an interactive shell. There is no need to set anything past this point for scp and rcp.
+if [[ $- != *i* ]] ; then return ; fi
 
-# Test for an interactive shell.  There is no need to set anything
-# past this point for scp and rcp, and it's important to refrain from
-# outputting anything in those cases.
-if [[ $- != *i* ]] ; then
-  return
-fi
-
-[[ -f /etc/profile ]] && . /etc/profile
+if [[ -f /etc/profile ]] ; then . /etc/profile ; fi
 
 HISTCONTROL="ignoreboth:ignorespace"
 HISTSIZE=10000
@@ -90,7 +79,7 @@ if [[ -e "$tilix_vte_file" && ( -n "$TILIX_ID" || -n "$VTE_VERSION" ) ]]; then
   . "$tilix_vte_file"
 fi
 
-NIX_PATH="$NIX_PATH:$HOME/nix/nixpkgs"
+#~NIX_PATH="$NIX_PATH:$HOME/nix/nixpkgs"
 
 ###
 

@@ -1,4 +1,5 @@
 *.sw[nop]
+*~
 
 /*
 
@@ -23,7 +24,7 @@
 !/.config/
 /.config/*
 
-!/.config/geeqie
+!/.config/geeqie/
 /.config/geeqie/*
 !/.config/geeqie/applications/
 

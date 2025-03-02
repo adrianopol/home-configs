@@ -3,6 +3,8 @@
 " Name:        paq-minimal.vim
 " Maintainer:  Andrew Petelin <adrianopol@rbox.me>
 " License:     public domain
+"
+" 256 color table: http://www.calmar.ws/vim/256-xterm-24bit-rgb-color-chart.html
 
 hi clear
 set background=dark
@@ -20,6 +22,7 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 
 " python: docstring
 au FileType python syntax region Comment start=/^\s*r\?"""/ end=/"""/
+au FileType python syntax region Comment start=/^\s*r\?'''/ end=/'''/
 
 if has("gui_running")
   hi Normal              guifg=#eeeeee guibg=#1c1c1c
@@ -96,3 +99,12 @@ hi! link htmlItalic         Normal
 hi! link htmlLink           Normal
 
 hi! link markdownError      Normal
+
+if has('nvim')
+  hi StatusLine   term=bold,reverse cterm=bold,reverse gui=bold,reverse
+
+  hi LineNr       guifg=#444444 guibg=#000000
+  hi Normal       guifg=White   guibg=#1e1e1e
+  hi Todo         guifg=Black   guibg=DarkYellow  cterm=bold gui=bold
+  hi Comment      guifg=#666666
+endif
